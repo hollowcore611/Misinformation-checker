@@ -1,0 +1,39 @@
+let text = ".";
+
+let length = text.length
+const wordCount = text.trim().split(/\s+/).length;
+console.log(`The paragraph has ${wordCount} words`);
+
+const wordToCount = "anger";
+
+const count = (text.match(new RegExp(`\\b${wordToCount}\\b`, 'gi')) || []).length;
+
+const wordToCount2 = "angry";
+
+const count2 = (text.match(new RegExp(`\\b${wordToCount2}\\b`, 'gi')) || []).length;
+
+const wordToCountall = count + count2;
+
+console.log(`charged words appear ${wordToCountall} times`);
+
+const triggerWords = ["Safe", "secure", "Guaranteed", "Exclusive", "Limited", "Rare", "Now", "Hurry", "Last chance"];
+const triggerRegex = new RegExp(`\\b(${triggerWords.join('|')})\\b`, 'gi');
+const counttrigger = (text.match(triggerRegex) || []).length; 
+console.log(`Trigger words appear ${counttrigger} times.`);
+
+const pointsForAnger = (count + count2 + counttrigger) * 50;
+
+const safeCount = (text.match(/\bsafe\b/gi) || []).length;
+
+console.log(`Total points: ${pointsForAnger}`);
+
+const pointsPerWord = pointsForAnger / wordCount;
+console.log(`Points per word: ${pointsPerWord}`);
+
+if (pointsForAnger > wordCount) {
+    console.log("This is a pursuasive document.");
+} else if (pointsForAnger < wordCount) {
+    console.log("This is not a pursuasive document.");
+} else {
+    console.log("This is a pursuasive document.");
+}
